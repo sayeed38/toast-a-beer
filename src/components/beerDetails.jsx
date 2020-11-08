@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography, Paper, Box } from "@material-ui/core";
 import CardContent from "@material-ui/core/CardContent";
+import Alert from "@material-ui/lab/Alert";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,6 +39,9 @@ const useStyles = makeStyles((theme) => ({
   content: {
     padding: 20,
   },
+  alertStyle: {
+    margin: 20,
+  },
 }));
 
 export default function BeerDetails(props) {
@@ -46,6 +50,13 @@ export default function BeerDetails(props) {
   const beer = beers.filter(
     (beer) => beer.id === parseInt(props.match.params.id)
   );
+  if (beer.length === 0) {
+    return (
+      <Alert severity="error" className={classes.alertStyle}>
+        404 Not Found!
+      </Alert>
+    );
+  }
   const obj = beer[0]?.ingredients;
   const ingredients = {};
   for (let key in obj) {

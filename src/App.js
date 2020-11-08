@@ -7,6 +7,7 @@ import Feed from "./components/feed";
 import Dashboard from "./components/dashboard";
 import SideBar from "./components/SideBar";
 import BeerDetails from "./components/beerDetails";
+import Error from "./components/error";
 
 const useStyles = makeStyles((theme) => ({
   root : {
@@ -100,8 +101,9 @@ function App() {
       <Switch>
         <Route path="/dashboard/:id" component={(props, beer) => <BeerDetails beers ={beers} {...props}/>}/>
         <Route path="/dashboard"><Dashboard beers={beers}/></Route>
-        <Route path="/"><Feed handleLike={handleLike} addComments={addComments}
+        <Route path="/" exact><Feed handleLike={handleLike} addComments={addComments}
         beers={beers}/></Route>
+        <Route component={Error}/>
       </Switch>
     </div>
     </>
