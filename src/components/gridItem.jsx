@@ -29,7 +29,7 @@ function GridItem(props) {
       <Typography variant="h5">{name}</Typography>
       <Typography variant="body1">{tagLine}</Typography>
       <Typography variant="body2">
-        {description.slice(0, 150) + "...."}
+        {description.slice(0, 80) + "...."}
       </Typography>
     </Paper>
   );
